@@ -5,7 +5,12 @@ import React, { Component } from 'react';
 
 class App extends Component {
   render() {
-    return <input type="text" onClick={()=>{console.log ("I am clicked!") }} />;
+    return(
+      <div>
+      <label htmlFor="bar">bar</label>
+      <input type="text" onClick={() => { alert("hoge") }} />
+      </div>
+      )
   }
 }
 
