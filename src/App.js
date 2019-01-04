@@ -5,7 +5,11 @@ import React, { Component } from 'react';
 
 class App extends Component {
   render() {
-    return ( <div ><h1> hogehogehogehoge</h1> </div>);
+    return React.createElement(
+      "h1",
+      null,
+      "hello, world"
+    );
   }
 }
 
