@@ -1,32 +1,28 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+import { increment, decrement } from '../actions'
 
-
-import React from 'react';
-
-// class App extends Component {
-//  render() {
-//    return(
-//      <React.Fragment>
-//      <label htmlFor="bar">bar</label>
-//      <input type="text" onClick={() => { alert("hoge") }} />
-//      </React.Fragment>
-//      )
-//  }
-//}
-
-const App = () => {
-  return (
-    <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-    </div>
-  )
+ class App extends Component {
+  render() {
+    const props = this.props
+    return(
+      <React.Fragment>
+        <div>value: { props.value} </div>
+        <button onClick={props.increment}>+1</button>
+        <button onClick={props.decrement}>-1</button>
+      </React.Fragment>
+      )
+  }
 }
 
-const Cat = () => {
-  return <div>Meow!!</div>
-}
+const mapStateToProps = state => ({value: state.cont.value})
+const mapDispatchToProps = disoatch => ({
+  increment: () => dispatch(increment()),
+  decrement: () => dispatch(decrement()),
+})
 
-export default App;
+//ショートハンド
+//const mapDispatchToProps = ({increment, decrement })
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)
